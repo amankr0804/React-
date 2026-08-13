@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loop</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <script>
+        // Example of a for loop
+        for (let i = 0; i < 5; i++) {
+            document.writeln("Iteration: " + i);
+        }
+
+        // Example of a while loop
+        let j = 0;
+        while (j < 5) {
+            document.writeln("While loop iteration: " + j);
+            j++;
+        }
+        const car = ["car1", "car2", "car3"];
+        let length = car.length;
+        let text = " ";
+        for (let i = 0; i < length; i++) {
+            text += car[i] + "<br>";
+        }
+        document.getElementById("demo").innerHTML = text;
+    </script>
+</body>
+</html>
