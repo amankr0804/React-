@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function</title>
+</head>
+<body>
+    <script>
+        function greet(name) {
+            return "Hello, " + name + "!";
+        }
+
+        let greeting = greet("Alice");
+        document.writeln("<br>" + greeting);
+
+        function add(a, b) {
+            return a + b;
+        }
+
+        let sum = add(5, 10);
+        document.writeln("<br>Sum: " + sum);
+
+        function factorial(n) {
+            if (n === 0 || n === 1) {
+                return 1;
+            }
+            return n * factorial(n - 1);
+        }
+
+        let fact = factorial(5);
+        document.writeln("<br>Factorial of 5: " + fact);
+    </script>
+</body>
+</html>
