@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment1</title>
+</head>
+<style>
+    
+    .container {
+        text-align: center;
+        margin: 20px;
+        border: 1px solid #ccc;
+        background-color: blanchedalmond
+        
+    }
+    button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+    root {
+        margin: 20px;
+        text-align: center;
+        color: blue;
+        border: 1px solid #ccc;
+        background-color: aquamarine;
+    }
+</style>
+<body>
+    <div class="container">
+        <h1>Online Store</h1>
+        <p>Welcome to our online store!</p>
+    
+    
+        <h3>Cart Items:</h3>
+        <p>Tea : 120 </p>
+        <p>Coffee : 150 </p>
+        <p>Rice : 100  </p>
+        <p>Sugar : 80 </p>
+    
+    <button onclick="addToCart()">Add to Cart</button>
+    </div>
+    <script>
+        
+        
+        function addToCart() {
+            let a = prompt("Enter the item name to add to cart:");
+            let b = parseInt(prompt("Enter the quantity:"));
+
+            if (cartItems.hasOwnProperty(a)) {
+                cartItems[a] += b;
+                alert(b + " " + a + "(s) added to cart.");
+            } else {
+                alert("Item not found in the store.");
+            }
+
+            displayCart();
+        }
+
+        function displayCart() {
+            let cartContent = "<h3>Updated Cart Items:</h3>";
+            for (let item in cartItems) {
+                cartContent += "<p>" + item + " : " + cartItems[item] + "</p>";
+            }
+            document.querySelector(".container").innerHTML = cartContent;
+        }
+    </script>
+    
+        
+</body>
+</html>

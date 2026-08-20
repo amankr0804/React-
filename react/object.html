@@ -11,10 +11,9 @@
             name: "John Doe",
             age: 20,
             major: "Computer Science",}
-           document.writeln("<br>Name: " + student.name);
-            document.writeln("<br>Age: " + student.age);
-            document.writeln("<br>Major: " + student.major);
-
+           for(let x in student){
+            document.write(student[x] + "<br>");
+           }
         
     </script>
 </body>
