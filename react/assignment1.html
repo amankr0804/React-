@@ -3,71 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment1</title>
+    <title>Grocery Menu</title>
+
+    <style>
+        .menu {
+            width: 250px;
+            border: 2px solid purple;
+            padding: 20px;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        .item {
+            padding: 8px;
+            margin: 5px;
+            background-color: #f0f0f0;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
-<style>
-    
-    .container {
-        text-align: center;
-        margin: 20px;
-        border: 1px solid #ccc;
-        background-color: blanchedalmond
-        
-    }
-    button {
-        display: block;
-        margin: 20px auto;
-        padding: 10px 20px;
-        font-size: 16px;
-    }
-    root {
-        margin: 20px;
-        text-align: center;
-        color: blue;
-        border: 1px solid #ccc;
-        background-color: aquamarine;
-    }
-</style>
+
 <body>
-    <div class="container">
-        <h1>Online Store</h1>
-        <p>Welcome to our online store!</p>
-    
-    
-        <h3>Cart Items:</h3>
-        <p>Tea : 120 </p>
-        <p>Coffee : 150 </p>
-        <p>Rice : 100  </p>
-        <p>Sugar : 80 </p>
-    
-    <button onclick="addToCart()">Add to Cart</button>
+
+    <div class="menu">
+        <h2>Menu</h2>
+        <div id="items"></div>
+        <button onclick="order()">Order Now</button>
     </div>
+
     <script>
-        
-        
-        function addToCart() {
-            let a = prompt("Enter the item name to add to cart:");
-            let b = parseInt(prompt("Enter the quantity:"));
 
-            if (cartItems.hasOwnProperty(a)) {
-                cartItems[a] += b;
-                alert(b + " " + a + "(s) added to cart.");
-            } else {
-                alert("Item not found in the store.");
-            }
-
-            displayCart();
+        const menu= {
+            Tea: 450,
+            Coffee: 600,
+            Sugar: 700,
+            Millets: 500
+        };
+        const image={
+            Tea: "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSNRPU2gVF_Mi9a-wZ7HZKZgSt6iPFS_dPjUv3EVOdk2w&s=10' width='100' height='100'>",
+            Coffee: "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9BWsHzKWXY3orjOriG-fEK5zNHO5nvvAX-j72BuCXGg&s=10' width='100' height='100'>",
+            Sugar: "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmDZv5qPdy8f9yLfJc9NYSc9heAa_Dj0PiuFo70BebFQ&s=10' width='100' height='100'>",
+            Millets: "<img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR77U1JzZpY0X4eAVxRmiULYZtGLh1PjaYePGbZPP9xpQ&s=10' width='100' height='100'>"
         }
 
-        function displayCart() {
-            let cartContent = "<h3>Updated Cart Items:</h3>";
-            for (let item in cartItems) {
-                cartContent += "<p>" + item + " : " + cartItems[item] + "</p>";
-            }
-            document.querySelector(".container").innerHTML = cartContent;
+        const items = document.getElementById("items");
+
+        for (let i in menu) {
+            items.innerHTML += `
+                <div class="item">
+
+                    <p>${i} - ₹${menu[i]}</p>
+                </div>
+            `;
         }
+
+        function order() {
+
+            alert("Available options: Tea, Coffee, Sugar, Pulses");
+
+    let a = prompt("Enter your item name");
+    let b = parseInt(prompt("Enter your quantity"));
+
+    if (menu[a]!==undefined) {
+
+        let total=b*menu[a];
+
+        document.write(`
+            <div style="
+                width: 300px;
+                padding: 20px;
+                margin: 50px auto;
+                border: 2px solid black;
+                color:purple;
+                border-radius: 15px;
+                text-align: center;
+                font-family: Arial;
+                box-shadow: 0 4px 10px gray;
+            ">
+                <h2> Order Card</h2>
+                <p><b> ${image[a]}</p>
+                <p><b>Item:</b> ${a} </p>
+                <p><b>Quantity:</b> ${b}</p>
+                <p><b>Price:</b> ₹${menu[a]}</p>
+                <p><b>Total Cost:</b> ₹${total}</p>
+            </div>
+        `);
+
+    } else {
+        document.write("Item not available");
+    }
+        }
+
     </script>
-    
-        
+
 </body>
 </html>
