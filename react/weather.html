@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input[type="text"] {
+            padding: 5px;
+            width: 200px;
+        }
+        button {
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #weather-info {
+            margin-top: 20px;
+        }   
+        </style>
+</head>
+<body>
+    <div>
+        <h1>Weather App</h1>
+        <p>Welcome to the Weather App!</p>
+        <form id="weather-form">
+            <label for="city">Enter City Name:</label>
+            <input type="text" id="city" name="city" required>
+            <button type="submit">Get Weather</button>
+        </form>
+        <div id="weather-info">
+        </div>
+    </div>
+    <script>
+        const form = document.getElementById('weather-form');
+        const weatherInfoDiv = document.getElementById('weather-info');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const city = document.getElementById('city').value;
+            const apiKey = 'e5cb7527f8cdb3b216e61965eb845ed5'; // Replace with your OpenWeatherMap API key
+            const url = `https://home.openweathermap.org/api_keys/${apiKey}/weather?q=${city}&appid=${apiKey}&units=metric`;
+        });
+    </script>
+</body>
+</html>
