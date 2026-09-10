@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY SHOP</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>S.no</th>
+                <th>Title</th>
+                <th>Image</th>
+                <th>Category</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody id="data">
+            <!-- Product rows will be dynamically inserted here -->
+        </tbody>
+    </table>
+    <script>
+        // Fetch product data from the API
+        const ele = document.getElementById("data");
+        const URL = "https://dummyjson.com/products";
+        async function loadData() {
+            try {
+                const res = await fetch(URL);
+                const data = await res.json();
+                // Process and display the product data
+                console.log("DATA", data.products);
+                let row = "";
+                data.products.map((i, index) => {
+                    row += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${i.title}</td>
+                        <td><img src = "${i.images[0]}" width="100" height="100"></td>
+                        <td>${i.category}</td>
+                        <td>${i.price}</td>
+                    </tr>
+                    `;
+                    ele.innerHTML = row;
+
+
+                })
+            }
+            catch (err) {
+                console.log("Error", err);
+            }
+        }
+        loadData();
+    </script>
+</body>
+</html>
