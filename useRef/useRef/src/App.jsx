@@ -4,7 +4,7 @@ function myfunction() {
   const box = useRef(0);
   const update = () => {
     box.current = 1000;
-    comsol.log("update :", box.current);
+    console.log("update :", box.current);
   };
   return (
     <div>
